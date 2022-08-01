@@ -1,0 +1,24 @@
+<view catchTap="">
+  <view class="add-task" onTap="onTap">
+    <button class="add-button" onTap="onAddToDo">
+      <icon color="#fff" type="plus" />
+      <text>Add task</text>
+    </button>
+  </view>
+  <view class="todo-items">
+    <view class="todo-items-group">
+      <view tiki:for="{{todos}}" class="todo" {{item.completed ? 'checked' : '' }} id="item-{{item._id}}"
+        tiki:key="*this">
+        <view data-id="{{item._id}}" class="before {{item.completed ? 'checked' : ''}}" catchTap="onTodoChanged"></view>
+        <view data-id="{{item._id}}" class="x-mark" onTap="onDelete"><text decode="true">x</text></view>
+        <view class="todo-item {{item.completed ? 'checked' : ''}}">
+          <view data-id="{{item._id}}" class="after {{item.completed ? 'checked' : ''}}" catchTap="onTodoChanged">
+          </view>
+          <input data-id="{{item._id}}" focus="{{item.onFocus}}" class="todo-item-text" value="{{item.description}}"
+            onFocus="onToDoFocus" onBlur="onToDoBlur">
+          </input>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
